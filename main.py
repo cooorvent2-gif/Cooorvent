@@ -14,7 +14,21 @@ class Report(BaseModel):
 
 # Временная память в облаке
 reports_db = []
-
+@app.get("/api/reports")
+def get_reports():
+    # Здесь ты возвращаешь список отчетов из своей базы данных (например, из SQLAlchemy или списка)
+    # Пример возврата тестовых или реальных данных:
+    return [
+        {
+            "id": 1,
+            "user_id": 1,
+            "category": "Администрирование",
+            "hours_spent": 1.5,
+            "description": "Настройка сервера",
+            "project_name": "Naumen SD / Внеплановая работа",
+            "created_at": "21.07.2026 12:00"
+        }
+    ]
 @app.post("/api/reports")
 def add_report(report: Report):
     data = report.dict()
